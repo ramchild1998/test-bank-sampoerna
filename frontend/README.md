@@ -29,10 +29,11 @@ This project consists of a backend API built with Go and a frontend application 
 - PowerShell (if using Windows)
 
 ### Installation
+Clone the repository:
+   git clone https://github.com/ramchild1998/test-bank-sampoerna.git
 
 1. Unzip Folder :
    test-bank-sampoerna
-   cd bank-sampoerna/backend -> backend
    cd bank-sampoerna/backend -> backend
 
 2. Install Dependencies
@@ -64,7 +65,7 @@ npm 10+
 
 Installation
 1. Clone the repository:
-   git clone https://github.com/ramchild1998/bank-sampoerna.git
+   git clone https://github.com/ramchild1998/test-bank-sampoerna.git
    cd bank-sampoerna/frontend
 2. Install Dependencies
    npm install
