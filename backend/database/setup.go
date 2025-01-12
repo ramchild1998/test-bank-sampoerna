@@ -14,7 +14,7 @@ import (
 var DB *gorm.DB
 
 func createDatabaseIfNotExist() {
-	connStr := "host=localhost user=youruser password=yourpassword dbname=postgres port=5432 sslmode=disable"
+	connStr := "host=localhost user=postgres password=root dbname=bank_db port=5432 sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal("failed to connect to PostgreSQL:", err)
