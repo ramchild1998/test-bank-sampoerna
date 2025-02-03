@@ -1,3 +1,4 @@
+// Package router berisi konfigurasi routing untuk API
 package router
 
 import (
@@ -6,6 +7,22 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// InitRouter menginisialisasi dan mengkonfigurasi router HTTP
+// Fungsi ini mendaftarkan semua endpoint API yang tersedia:
+//
+// Endpoint untuk Rekening:
+// - POST /rekening - Membuat rekening baru
+// - GET /rekening/{id} - Mengambil data rekening berdasarkan ID
+// - PUT /rekening/{id} - Memperbarui data rekening berdasarkan ID
+// - DELETE /rekening/{id} - Menghapus rekening berdasarkan ID
+//
+// Endpoint untuk Transaksi:
+// - POST /transaksi - Membuat transaksi baru
+// - GET /transaksi/{id} - Mengambil data transaksi berdasarkan ID
+// - PUT /transaksi/{id} - Memperbarui data transaksi berdasarkan ID
+// - DELETE /transaksi/{id} - Menghapus transaksi berdasarkan ID
+//
+// Mengembalikan pointer ke mux.Router yang telah dikonfigurasi
 func InitRouter() *mux.Router {
 	router := mux.NewRouter()
 	router.HandleFunc("/rekening", handlers.CreateRekening).Methods("POST")

@@ -1,28 +1,32 @@
+# Konfigurasi layanan-layanan yang akan dijalankan
 services:
+  # Layanan database PostgreSQL
   postgres:
-    image: postgres:17
-    container_name: postgres
-    environment: 
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: "root"
-      POSTGRES_DB: bank_db
+    image: postgres:17                    # Menggunakan image PostgreSQL versi 17
+    container_name: postgres              # Nama container
+    environment:                          # Variabel lingkungan untuk konfigurasi PostgreSQL
+      POSTGRES_USER: postgres             # Username database
+      POSTGRES_PASSWORD: "root"           # Password database 
+      POSTGRES_DB: bank_db               # Nama database yang akan dibuat
     ports:
-      - "5432:5432"
+      - "5432:5432"                      # Port mapping dari host ke container
     networks:
-        - app-network
+      - app-network                      # Terhubung ke network app-network
   
+  # Layanan backend Go
   go-backend:
     build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: go-backend
+      context: .                         # Build context dari direktori saat ini
+      dockerfile: Dockerfile             # Menggunakan Dockerfile untuk build image
+    container_name: go-backend           # Nama container
     ports:
-      - "8000:8000"
+      - "8000:8000"                     # Port mapping dari host ke container
     depends_on:
-      - postgres
+      - postgres                        # Menunggu layanan postgres siap sebelum start
     networks:
-      - app-network
+      - app-network                     # Terhubung ke network app-network
 
+# Konfigurasi networks
 networks:
-  app-network:
-    driver: bridge
+  app-network:                          # Network untuk menghubungkan antar container
+    driver: bridge                      # Menggunakan driver bridge
